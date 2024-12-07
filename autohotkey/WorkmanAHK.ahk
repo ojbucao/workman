@@ -469,14 +469,14 @@ class Hotkeys {
 
 	class Callback {
 		class Sender {
-			keyname := ""
+			key_send_name_orgn := ""
 
 			__New(keyname) {
-				this.keyname := keyname
+				this.key_send_name_orgn := "{" keyname "}"
 			}
 	
 			Call(*) {
-				Send("{" this.keyname "}")
+				Send(this.key_send_name_orgn)
 			}
 		}
 	}
