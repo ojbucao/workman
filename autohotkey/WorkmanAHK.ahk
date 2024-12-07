@@ -2,6 +2,7 @@
 ; 2017/__/__ ~ 2017/03/07 -> _._._ | Joel May -> Public domain.
 ; 2024/12/06 ~ 2024/12/06 -> 1.1.0 | XPERZ -> Adjustment tray menu.
 ; 2024/12/06 ~ 2024/12/07 -> 1.2.0 | XPERZ -> Supports DVORAK layout and reverse mode.
+; 2024/12/07 ~ 2024/12/07 -> 1.2.1 | XPERZ -> Enhance maintainability.
 
 
 
@@ -28,6 +29,7 @@ Persistent
 
 
 
+; To add a new layout mapping, edit this container in the format.
 WORKMAN_MAPPING_LAYOUTS := Map(
 	; https://kbdlayout.info/kbddv
 	"US DVORAK", [
@@ -103,9 +105,9 @@ Runtime.Ensurance()
 Config.Initiation()
 
 ; Must be after `Config.Initiation()`.
-LAYOUT_HOTKEYS := Hotkeys()
+Hotkeys.Initiation()
 
-; Must be after `Config.Initiation()` and `LAYOUT_HOTKEYS`.
+; Must be after `Config.Initiation()` and `Hotkeys.Initiation()`.
 TrayMenu.Construct()
 
 
@@ -363,7 +365,7 @@ class TrayMenu {
 				cfg := Config.File.Unique.BaseLayout.LayoutName
 
 				cfg.value := this.layout_name
-				LAYOUT_HOTKEYS.Exchange()
+				Hotkeys.Exchange()
 
 				Config.File.Unique.Write()
 				for item_name in WORKMAN_MAPPING_LAYOUTS
@@ -378,7 +380,7 @@ class TrayMenu {
 			cfg := Config.File.Unique.SpecialMode.ReversMode
 
 			cfg.value := !cfg.value
-			LAYOUT_HOTKEYS.Exchange()
+			Hotkeys.Exchange()
 
 			Config.File.Unique.Write()
 			if (cfg.value == true)
@@ -413,42 +415,54 @@ class TrayMenu {
 
 
 class Hotkeys {
+	; Should be empty in principle, but static classes are not always safe.
 	layout := Config.File.Unique.BaseLayout.LayoutName.value
 	revers := Config.File.Unique.SpecialMode.ReversMode.value
 
-	__New() {
-		this.__Create()
+
+
+	static Initiation(self := Hotkeys) {
+		self.layout := Config.File.Unique.BaseLayout.LayoutName.value
+		self.revers := Config.File.Unique.SpecialMode.ReversMode.value
+
+		self.Create()
 	}
 
-	__Create(self := Hotkeys) {
+
+
+	static Nestle(self := Hotkeys) {
 		idx_base := 1, idx_from := 2
-		if (this.revers == true)
+		if (self.revers == true)
 			idx_base := 2, idx_from := 1
 
-		for key_pair in WORKMAN_MAPPING_LAYOUTS.Get(this.layout) {
-			key_base := key_pair[idx_base], key_from := key_pair[idx_from]
-			Hotkey(key_base, self.Callback.Sender(key_from), "On")
-		}
-	}
-
-	__Nestle() {
-		idx_base := 1, idx_from := 2
-		if (this.revers == true)
-			idx_base := 2, idx_from := 1
-
-		for key_pair in WORKMAN_MAPPING_LAYOUTS.Get(this.layout) {
+		for key_pair in WORKMAN_MAPPING_LAYOUTS.Get(self.layout) {
 			key_base := key_pair[idx_base], key_from := key_pair[idx_from]
 			Hotkey(key_base, , "Off")
 		}
 	}
 
-	Exchange(other := Config.File.Unique) {
-		this.__Nestle()
 
-		this.layout := other.BaseLayout.LayoutName.value
-		this.revers := other.SpecialMode.ReversMode.value
 
-		this.__Create()
+	static Create(self := Hotkeys) {
+		idx_base := 1, idx_from := 2
+		if (self.revers == true)
+			idx_base := 2, idx_from := 1
+
+		for key_pair in WORKMAN_MAPPING_LAYOUTS.Get(self.layout) {
+			key_base := key_pair[idx_base], key_from := key_pair[idx_from]
+			Hotkey(key_base, self.Callback.Sender(key_from), "On")
+		}
+	}
+
+
+
+	static Exchange(self := Hotkeys, other := Config.File.Unique) {
+		self.Nestle()
+
+		self.layout := other.BaseLayout.LayoutName.value
+		self.revers := other.SpecialMode.ReversMode.value
+
+		self.Create()
 	}
 
 
@@ -530,7 +544,7 @@ class UserInterface {
 ;@Ahk2Exe-UpdateManifest 0
 
 ;@Ahk2Exe-SetDescription Workman layout for AutoHotkey
-;@Ahk2Exe-SetFileVersion 1.2.0
+;@Ahk2Exe-SetFileVersion 1.2.1
 ;@Ahk2Exe-SetProductName Workman
 ;@Ahk2Exe-SetProductVersion 　
 ;@Ahk2Exe-SetCompanyName https://workmanlayout.org
