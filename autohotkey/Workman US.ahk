@@ -1,6 +1,7 @@
-﻿; Workman layout for AutoHotkey - Reverted US-DVORAK
+﻿; Workman layout for AutoHotkey - US
 ; 2024/12/08 ~ 2024/12/08 -> 1.0.0 | XPERZ -> Separate from WorkmanAHK v1.3.0.
 ; 2024/12/08 ~ 2024/12/08 -> 1.0.1 | XPERZ -> Fixes problems during UAC attempts.
+; 2024/12/09 ~ 2024/12/09 -> 1.1.0 | XPERZ -> Full support for US layout.
 
 
 
@@ -20,40 +21,60 @@ SendMode("Input")
 Runtime.Ensurance()
 TrayMenu.Construct()
 
-SC028::SC00C
-SC01B::SC00D
-SC02D::SC010
-SC023::SC011
-SC018::SC012
-SC033::SC013
-SC031::SC014
-SC02E::SC015
-SC015::SC016
-SC021::SC017
-SC013::SC018
-SC02C::SC019
-SC00C::SC01A
-SC00D::SC01B
-SC027::SC01F
-SC024::SC020
-SC025::SC021
-SC016::SC022
-SC014::SC023
-SC026::SC024
-SC020::SC025
-SC01F::SC026
-SC022::SC027
-SC010::SC028
-SC035::SC02C
-SC030::SC02D
-SC032::SC02E
-SC017::SC02F
-SC034::SC030
-SC02F::SC031
-SC019::SC032
-SC011::SC033
-SC012::SC034
-SC01A::SC035
+SC029::VKC0
+SC002::VK31
+SC003::VK32
+SC004::VK33
+SC005::VK34
+SC006::VK35
+SC007::VK36
+SC008::VK37
+SC009::VK38
+SC00A::VK39
+SC00B::VK30
+SC00C::VKBD
+SC00D::VKBB
+
+SC010::VK51
+SC011::VK44 ; VK57
+SC012::VK52 ; VK45
+SC013::VK57 ; VK52
+SC014::VK42 ; VK54
+SC015::VK4A ; VK59
+SC016::VK46 ; VK55
+SC017::VK55 ; VK49
+SC018::VK50 ; VK4F
+SC019::VKBA ; VK50
+SC01A::VKDB
+SC01B::VKDD
+
+SC01E::VK41
+SC01F::VK53
+SC020::VK48 ; VK44
+SC021::VK54 ; VK46
+SC022::VK47
+SC023::VK59 ; VK48
+SC024::VK4E ; VK4A
+SC025::VK45 ; VK4B
+SC026::VK4F ; VK4C
+SC027::VK49 ; VKBA
+SC028::VKDE
+SC02B::VKDC
+
+SC02C::VK5A
+SC02D::VK58
+SC02E::VK4D ; VK43
+SC02F::VK43 ; VK56
+SC030::VK56 ; VK42
+SC031::VK4B ; VK4E
+SC032::VK4C ; VK4D
+SC033::VKBC
+SC034::VKBE
+SC035::VKBF
+
+SC039::VK20
+
+SC053::VK6E
 
 
 
@@ -101,7 +122,7 @@ class TrayMenu {
 	static Construct(self := TrayMenu) {
 		Menu := A_TrayMenu
 		Menu.Delete()
-		A_IconTip := ""
+		A_IconTip := "Workman US"
 
 		; MENU BEGIN --------
 
@@ -160,14 +181,14 @@ class TrayMenu {
 
 ;@Ahk2Exe-UpdateManifest 0
 
-;@Ahk2Exe-SetDescription Workman layout for AutoHotkey - Reverted US-DVORAK
-;@Ahk2Exe-SetFileVersion 1.0.1
+;@Ahk2Exe-SetDescription Workman layout for AutoHotkey - US
+;@Ahk2Exe-SetFileVersion 1.1.0
 ;@Ahk2Exe-SetProductName WorkmanAHK
-;@Ahk2Exe-SetProductVersion 1.3.1
+;@Ahk2Exe-SetProductVersion 1.4.0
 ;@Ahk2Exe-SetCompanyName https://workmanlayout.org
 ;@Ahk2Exe-SetCopyright The Workman Keyboard Layout created by OJ Bucao.
-;@Ahk2Exe-SetLanguage 0x0409 ; English_US    ; 0009 and 04B0 as appropriate.
-;@Ahk2Exe-SetOrigFilename Workman into US-DVORAK.exe
+;@Ahk2Exe-SetLanguage 0x0409 ; English_US
+;@Ahk2Exe-SetOrigFilename Workman US.exe
 
 ;@Ahk2Exe-SetMainIcon .\icon\wm-i1.ico       ; Default icon.
 ;;@Ahk2Exe-AddResource .\icon\wm-if.ico, 160 ; The .ahk file icon.

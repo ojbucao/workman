@@ -4,65 +4,37 @@ This AutoHotKey script is designed for when you want Workman on Windows, but can
 
 You need https://autohotkey.com for this script, or use the exe version.
 
-## Workman from US-DVORAK
+-----
 
-Minimum requirements: `AutohotkeyV2` `Autohotkey v2.0.10`  
-Current build: `Autohotkey v2.0.18 64-bit` `MPRESS v2.1.9.0`
+#### Version Differences
 
-**For [US-DVORAK](https://kbdlayout.info/kbddv) layout**, convert it to Workman.
+- **`Layout Name` `Language Identification`**
 
-Tray menu options:
+	Each script or program only for specific layout.
 
-- `Enable`: Enable or disable mapping, can by click the tray icon or use hotkey **LCtrl + RCtrl**.
-- `Exit`: Exit the script or exe.
+- **WorkmanAHK**
 
-## Workman from US-QWERTY
+	Has all the features listed, but is slightly less stable.
 
-Minimum requirements: `AutohotkeyV2` `Autohotkey v2.0.10`  
-Current build: `Autohotkey v2.0.18 64-bit` `MPRESS v2.1.9.0`
+### Language Identification
 
-**For [US-QWERTY](https://kbdlayout.info/kbdus) layout**, convert it to Workman.
+- `US`: See https://kbdlayout.info/kbdus
+	- US Layout
+	- Bulgarian (Latin) Layout
+	- Chinese (Simplified) - US Layout
+	- Chinese (Simplified, Singapore) - US Layout
+	- Chinese (Traditional) - US Layout
+	- Chinese (Traditional, Hong Kong S.A.R.) - US Layout
+	- Chinese (Traditional, Macao S.A.R.) - US Layout
+- `UK`: See https://kbdlayout.info/kbduk
+	- United Kingdom Layout
 
-Tray menu options:
-
-- `Enable`: Enable or disable mapping, can by click the tray icon or use hotkey **LCtrl + RCtrl**.
-- `Exit`: Exit the script or exe.
-
-## Workman into US-DVORAK
-
-Minimum requirements: `AutohotkeyV2` `Autohotkey v2.0.10`  
-Current build: `Autohotkey v2.0.18 64-bit` `MPRESS v2.1.9.0`
-
-**For Workman layout**, convert it to [US-DVORAK](https://kbdlayout.info/kbddv).
-
-Tray menu options:
+### Tray menu options
 
 - `Enable`: Enable or disable mapping, can by click the tray icon or use hotkey **LCtrl + RCtrl**.
 - `Exit`: Exit the script or exe.
 
-## Workman into US-QWERTY
+-----
 
 Minimum requirements: `AutohotkeyV2` `Autohotkey v2.0.10`  
 Current build: `Autohotkey v2.0.18 64-bit` `MPRESS v2.1.9.0`
-
-**For Workman layout**, convert it to [US-QWERTY](https://kbdlayout.info/kbdus).
-
-Tray menu options:
-
-- `Enable`: Enable or disable mapping, can by click the tray icon or use hotkey **LCtrl + RCtrl**.
-- `Exit`: Exit the script or exe.
-
-## WorkmanAHK
-
-Minimum requirements: `AutohotkeyV2` `Autohotkey v2.0.10`  
-Current build: `Autohotkey v2.0.18 64-bit` `MPRESS v2.1.9.0`
-
-Has all of the above features but is slightly less stable.
-
-Tray menu options:
-
-- `US QWERTY`: Mapping US-QWERTY layout to Workman.
-- `US DVORAK`: Mapping US-DVORAK layout to Workman.
-- `Revers Mode`: Mapping Workman to selected Layout.
-- `Enable`: Enable or disable mapping, can by click the tray icon or use hotkey **LCtrl + RCtrl**.
-- `Exit`: Exit the script or exe.

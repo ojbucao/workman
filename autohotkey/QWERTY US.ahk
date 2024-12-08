@@ -1,6 +1,7 @@
-﻿; Workman layout for AutoHotkey - Reverted US-QWERTY
+﻿; QWERTY layout for AutoHotkey - US
 ; 2024/12/08 ~ 2024/12/08 -> 1.0.0 | XPERZ -> Separate from WorkmanAHK v1.3.0.
 ; 2024/12/08 ~ 2024/12/08 -> 1.0.1 | XPERZ -> Fixes problems during UAC attempts.
+; 2024/12/09 ~ 2024/12/09 -> 1.1.0 | XPERZ -> Full support for US layout.
 
 
 
@@ -20,27 +21,60 @@ SendMode("Input")
 Runtime.Ensurance()
 TrayMenu.Construct()
 
-SC020::SC011
-SC013::SC012
-SC011::SC013
-SC030::SC014
-SC024::SC015
-SC021::SC016
-SC016::SC017
-SC019::SC018
-SC027::SC019
-SC023::SC020
-SC014::SC021
-SC015::SC023
-SC031::SC024
-SC012::SC025
-SC018::SC026
-SC017::SC027
-SC032::SC02E
-SC02E::SC02F
-SC02F::SC030
-SC025::SC031
-SC026::SC032
+SC029::VKC0
+SC002::VK31
+SC003::VK32
+SC004::VK33
+SC005::VK34
+SC006::VK35
+SC007::VK36
+SC008::VK37
+SC009::VK38
+SC00A::VK39
+SC00B::VK30
+SC00C::VKBD
+SC00D::VKBB
+
+SC010::VK51
+SC011::VK57
+SC012::VK45
+SC013::VK52
+SC014::VK54
+SC015::VK59
+SC016::VK55
+SC017::VK49
+SC018::VK4F
+SC019::VK50
+SC01A::VKDB
+SC01B::VKDD
+
+SC01E::VK41
+SC01F::VK53
+SC020::VK44
+SC021::VK46
+SC022::VK47
+SC023::VK48
+SC024::VK4A
+SC025::VK4B
+SC026::VK4C
+SC027::VKBA
+SC028::VKDE
+SC02B::VKDC
+
+SC02C::VK5A
+SC02D::VK58
+SC02E::VK43
+SC02F::VK56
+SC030::VK42
+SC031::VK4E
+SC032::VK4D
+SC033::VKBC
+SC034::VKBE
+SC035::VKBF
+
+SC039::VK20
+
+SC053::VK6E
 
 
 
@@ -88,7 +122,7 @@ class TrayMenu {
 	static Construct(self := TrayMenu) {
 		Menu := A_TrayMenu
 		Menu.Delete()
-		A_IconTip := ""
+		A_IconTip := "QWERTY US"
 
 		; MENU BEGIN --------
 
@@ -147,14 +181,14 @@ class TrayMenu {
 
 ;@Ahk2Exe-UpdateManifest 0
 
-;@Ahk2Exe-SetDescription Workman layout for AutoHotkey - Reverted US-QWERTY
-;@Ahk2Exe-SetFileVersion 1.0.1
+;@Ahk2Exe-SetDescription QWERTY layout for AutoHotkey - US
+;@Ahk2Exe-SetFileVersion 1.1.0
 ;@Ahk2Exe-SetProductName WorkmanAHK
-;@Ahk2Exe-SetProductVersion 1.3.1
+;@Ahk2Exe-SetProductVersion 1.4.0
 ;@Ahk2Exe-SetCompanyName https://workmanlayout.org
 ;@Ahk2Exe-SetCopyright The Workman Keyboard Layout created by OJ Bucao.
-;@Ahk2Exe-SetLanguage 0x0409 ; English_US    ; 0009 and 04B0 as appropriate.
-;@Ahk2Exe-SetOrigFilename Workman into US-QWERTY.exe
+;@Ahk2Exe-SetLanguage 0x0409 ; English_US
+;@Ahk2Exe-SetOrigFilename QWERTY US.exe
 
 ;@Ahk2Exe-SetMainIcon .\icon\wm-i1.ico       ; Default icon.
 ;;@Ahk2Exe-AddResource .\icon\wm-if.ico, 160 ; The .ahk file icon.

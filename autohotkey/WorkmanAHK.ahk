@@ -5,6 +5,7 @@
 ; 2024/12/07 ~ 2024/12/07 -> 1.2.1 | XPERZ -> Enhance maintainability.
 ; 2024/12/08 ~ 2024/12/08 -> 1.3.0 | XPERZ -> Add hotkey for Enable function.
 ; 2024/12/08 ~ 2024/12/08 -> 1.3.1 | XPERZ -> Fixes problems during UAC attempts.
+; 2024/12/09 ~ 2024/12/09 -> 1.4.0 | XPERZ -> Remove the reverse mode; Full support for US and UK layout.
 
 
 
@@ -33,67 +34,216 @@ SendMode("Input")
 
 ; To add a new layout mapping, edit this container in the format.
 WORKMAN_MAPPING_LAYOUTS := Map(
-	; https://kbdlayout.info/kbddv
-	"US DVORAK", [
-		["SC00C","SC028"],
-		["SC00D","SC01B"],
-		["SC010","SC02D"],
-		["SC011","SC023"],
-		["SC012","SC018"],
-		["SC013","SC033"],
-		["SC014","SC031"],
-		["SC015","SC02E"],
-		["SC016","SC015"],
-		["SC017","SC021"],
-		["SC018","SC013"],
-		["SC019","SC02C"],
-		["SC01A","SC00C"],
-		["SC01B","SC00D"],
-		["SC01F","SC027"],
-		["SC020","SC024"],
-		["SC021","SC025"],
-		["SC022","SC016"],
-		["SC023","SC014"],
-		["SC024","SC026"],
-		["SC025","SC020"],
-		["SC026","SC01F"],
-		["SC027","SC022"],
-		["SC028","SC010"],
-		["SC02C","SC035"],
-		["SC02D","SC030"],
-		["SC02E","SC032"],
-		["SC02F","SC017"],
-		["SC030","SC034"],
-		["SC031","SC02F"],
-		["SC032","SC019"],
-		["SC033","SC011"],
-		["SC034","SC012"],
-		["SC035","SC01A"],
+	; https://kbdlayout.info/kbdus
+	"Workman US", [
+		["SC029","VKC0"],
+		["SC002","VK31"],
+		["SC003","VK32"],
+		["SC004","VK33"],
+		["SC005","VK34"],
+		["SC006","VK35"],
+		["SC007","VK36"],
+		["SC008","VK37"],
+		["SC009","VK38"],
+		["SC00A","VK39"],
+		["SC00B","VK30"],
+		["SC00C","VKBD"],
+		["SC00D","VKBB"],
+		["SC010","VK51"],
+		["SC011","VK44"],
+		["SC012","VK52"],
+		["SC013","VK57"],
+		["SC014","VK42"],
+		["SC015","VK4A"],
+		["SC016","VK46"],
+		["SC017","VK55"],
+		["SC018","VK50"],
+		["SC019","VKBA"],
+		["SC01A","VKDB"],
+		["SC01B","VKDD"],
+		["SC01E","VK41"],
+		["SC01F","VK53"],
+		["SC020","VK48"],
+		["SC021","VK54"],
+		["SC022","VK47"],
+		["SC023","VK59"],
+		["SC024","VK4E"],
+		["SC025","VK45"],
+		["SC026","VK4F"],
+		["SC027","VK49"],
+		["SC028","VKDE"],
+		["SC02B","VKDC"],
+		["SC02C","VK5A"],
+		["SC02D","VK58"],
+		["SC02E","VK4D"],
+		["SC02F","VK43"],
+		["SC030","VK56"],
+		["SC031","VK4B"],
+		["SC032","VK4C"],
+		["SC033","VKBC"],
+		["SC034","VKBE"],
+		["SC035","VKBF"],
+		["SC039","VK20"],
+		["SC053","VK6E"],
+	],
+
+	; https://kbdlayout.info/kbduk
+	"Workman UK", [
+		["SC029","VKDF"],
+		["SC002","VK31"],
+		["SC003","VK32"],
+		["SC004","VK33"],
+		["SC005","VK34"],
+		["SC006","VK35"],
+		["SC007","VK36"],
+		["SC008","VK37"],
+		["SC009","VK38"],
+		["SC00A","VK39"],
+		["SC00B","VK30"],
+		["SC00C","VKBD"],
+		["SC00D","VKBB"],
+		["SC010","VK51"],
+		["SC011","VK44"],
+		["SC012","VK52"],
+		["SC013","VK57"],
+		["SC014","VK42"],
+		["SC015","VK4A"],
+		["SC016","VK46"],
+		["SC017","VK55"],
+		["SC018","VK50"],
+		["SC019","VKBA"],
+		["SC01A","VKDB"],
+		["SC01B","VKDD"],
+		["SC01E","VK41"],
+		["SC01F","VK53"],
+		["SC020","VK48"],
+		["SC021","VK54"],
+		["SC022","VK47"],
+		["SC023","VK59"],
+		["SC024","VK4E"],
+		["SC025","VK45"],
+		["SC026","VK4F"],
+		["SC027","VK49"],
+		["SC028","VKC0"],
+		["SC02B","VKDE"],
+		["SC02C","VK5A"],
+		["SC02D","VK58"],
+		["SC02E","VK4D"],
+		["SC02F","VK43"],
+		["SC030","VK56"],
+		["SC031","VK4B"],
+		["SC032","VK4C"],
+		["SC033","VKBC"],
+		["SC034","VKBE"],
+		["SC035","VKBF"],
+		["SC039","VK20"],
+		["SC053","VK6E"],
 	],
 
 	; https://kbdlayout.info/kbdus
-	"US QWERTY", [
-		["SC011","SC020"],
-		["SC012","SC013"],
-		["SC013","SC011"],
-		["SC014","SC030"],
-		["SC015","SC024"],
-		["SC016","SC021"],
-		["SC017","SC016"],
-		["SC018","SC019"],
-		["SC019","SC027"],
-		["SC020","SC023"],
-		["SC021","SC014"],
-		["SC023","SC015"],
-		["SC024","SC031"],
-		["SC025","SC012"],
-		["SC026","SC018"],
-		["SC027","SC017"],
-		["SC02E","SC032"],
-		["SC02F","SC02E"],
-		["SC030","SC02F"],
-		["SC031","SC025"],
-		["SC032","SC026"],
+	"QWERTY US", [
+		["SC029","VKC0"],
+		["SC002","VK31"],
+		["SC003","VK32"],
+		["SC004","VK33"],
+		["SC005","VK34"],
+		["SC006","VK35"],
+		["SC007","VK36"],
+		["SC008","VK37"],
+		["SC009","VK38"],
+		["SC00A","VK39"],
+		["SC00B","VK30"],
+		["SC00C","VKBD"],
+		["SC00D","VKBB"],
+		["SC010","VK51"],
+		["SC011","VK57"],
+		["SC012","VK45"],
+		["SC013","VK52"],
+		["SC014","VK54"],
+		["SC015","VK59"],
+		["SC016","VK55"],
+		["SC017","VK49"],
+		["SC018","VK4F"],
+		["SC019","VK50"],
+		["SC01A","VKDB"],
+		["SC01B","VKDD"],
+		["SC01E","VK41"],
+		["SC01F","VK53"],
+		["SC020","VK44"],
+		["SC021","VK46"],
+		["SC022","VK47"],
+		["SC023","VK48"],
+		["SC024","VK4A"],
+		["SC025","VK4B"],
+		["SC026","VK4C"],
+		["SC027","VKBA"],
+		["SC028","VKDE"],
+		["SC02B","VKDC"],
+		["SC02C","VK5A"],
+		["SC02D","VK58"],
+		["SC02E","VK43"],
+		["SC02F","VK56"],
+		["SC030","VK42"],
+		["SC031","VK4E"],
+		["SC032","VK4D"],
+		["SC033","VKBC"],
+		["SC034","VKBE"],
+		["SC035","VKBF"],
+		["SC039","VK20"],
+		["SC053","VK6E"],
+	],
+
+	; https://kbdlayout.info/kbduk
+	"QWERTY UK", [
+		["SC029","VKDF"],
+		["SC002","VK31"],
+		["SC003","VK32"],
+		["SC004","VK33"],
+		["SC005","VK34"],
+		["SC006","VK35"],
+		["SC007","VK36"],
+		["SC008","VK37"],
+		["SC009","VK38"],
+		["SC00A","VK39"],
+		["SC00B","VK30"],
+		["SC00C","VKBD"],
+		["SC00D","VKBB"],
+		["SC010","VK51"],
+		["SC011","VK57"],
+		["SC012","VK45"],
+		["SC013","VK52"],
+		["SC014","VK54"],
+		["SC015","VK59"],
+		["SC016","VK55"],
+		["SC017","VK49"],
+		["SC018","VK4F"],
+		["SC019","VK50"],
+		["SC01A","VKDB"],
+		["SC01B","VKDD"],
+		["SC01E","VK41"],
+		["SC01F","VK53"],
+		["SC020","VK44"],
+		["SC021","VK46"],
+		["SC022","VK47"],
+		["SC023","VK48"],
+		["SC024","VK4A"],
+		["SC025","VK4B"],
+		["SC026","VK4C"],
+		["SC027","VKBA"],
+		["SC028","VKC0"],
+		["SC02B","VKDE"],
+		["SC02C","VK5A"],
+		["SC02D","VK58"],
+		["SC02E","VK43"],
+		["SC02F","VK56"],
+		["SC030","VK42"],
+		["SC031","VK4E"],
+		["SC032","VK4D"],
+		["SC033","VKBC"],
+		["SC034","VKBE"],
+		["SC035","VKBF"],
+		["SC039","VK20"],
+		["SC053","VK6E"],
 	],
 )
 
@@ -197,16 +347,7 @@ class Config {
 
 				class LayoutName {
 					static name := "LayoutName"
-					static value := "US QWERTY"
-				}
-			}
-
-			class SpecialMode {
-				static name := "SpecialMode"
-
-				class ReversMode {
-					static name := "ReversMode"
-					static value := false
+					static value := "Workman US"
 				}
 			}
 
@@ -240,13 +381,6 @@ class Config {
 					, self.BaseLayout.LayoutName.value)
 
 				ini_value_temp := IniRead(path
-					, self.SpecialMode.name
-					, self.SpecialMode.ReversMode.name
-					, self.SpecialMode.ReversMode.value)
-				self.SpecialMode.ReversMode.value := base.Analyze.BoolenType(ini_value_temp
-					, self.SpecialMode.ReversMode.value)
-
-				ini_value_temp := IniRead(path
 					, self.ScriptStatus.name
 					, self.ScriptStatus.Enable.name
 					, self.ScriptStatus.Enable.value)
@@ -265,10 +399,6 @@ class Config {
 				IniWrite(
 					self.BaseLayout.LayoutName.name "=" self.BaseLayout.LayoutName.value
 					, path, self.BaseLayout.name)
-
-				IniWrite(
-					self.SpecialMode.ReversMode.name "=" self.SpecialMode.ReversMode.value
-					, path, self.SpecialMode.name)
 
 				IniWrite(
 					self.ScriptStatus.Enable.name "=" self.ScriptStatus.Enable.value
@@ -327,13 +457,6 @@ class TrayMenu {
 
 		Menu.Add() ; --------
 
-		item_name__Revers := "Revers Mode"
-		Menu.Add(item_name__Revers, (*) => self.Callback.Toggle_Revers(Menu, item_name__Revers))
-		if (Config.File.Unique.SpecialMode.ReversMode.value == true)
-			Menu.Check(item_name__Revers)
-
-		Menu.Add() ; --------
-
 		item_name__Enable := "Enable"
 		item_hotkey_name_lalt := GetKeyName("SC038"), item_hotkey_name_ralt := GetKeyName("SC138")
 		item_name__Enable := item_name__Enable " (" item_hotkey_name_lalt " + " item_hotkey_name_ralt ")"
@@ -383,21 +506,6 @@ class TrayMenu {
 
 
 
-		static Toggle_Revers(menu, item) {
-			cfg := Config.File.Unique.SpecialMode.ReversMode
-
-			cfg.value := !cfg.value
-			Hotkeys.Exchange()
-
-			Config.File.Unique.Write()
-			if (cfg.value == true)
-				menu.Check(item)
-			else
-				menu.Uncheck(item)
-		}
-
-
-
 		static Toggle_Enable(menu, item, self := TrayMenu) {
 			cfg := Config.File.Unique.ScriptStatus.Enable
 
@@ -430,13 +538,11 @@ class TrayMenu {
 class Hotkeys {
 	; Should be empty in principle, but static classes are not always safe.
 	layout := Config.File.Unique.BaseLayout.LayoutName.value
-	revers := Config.File.Unique.SpecialMode.ReversMode.value
 
 
 
 	static Initiation(self := Hotkeys) {
 		self.layout := Config.File.Unique.BaseLayout.LayoutName.value
-		self.revers := Config.File.Unique.SpecialMode.ReversMode.value
 
 		self.Create()
 	}
@@ -445,8 +551,6 @@ class Hotkeys {
 
 	static Nestle(self := Hotkeys) {
 		idx_base := 1, idx_from := 2
-		if (self.revers == true)
-			idx_base := 2, idx_from := 1
 
 		for key_pair in WORKMAN_MAPPING_LAYOUTS.Get(self.layout) {
 			key_base := key_pair[idx_base], key_from := key_pair[idx_from]
@@ -458,8 +562,6 @@ class Hotkeys {
 
 	static Create(self := Hotkeys) {
 		idx_base := 1, idx_from := 2
-		if (self.revers == true)
-			idx_base := 2, idx_from := 1
 
 		for key_pair in WORKMAN_MAPPING_LAYOUTS.Get(self.layout) {
 			key_base := key_pair[idx_base], key_from := key_pair[idx_from]
@@ -473,7 +575,6 @@ class Hotkeys {
 		self.Nestle()
 
 		self.layout := other.BaseLayout.LayoutName.value
-		self.revers := other.SpecialMode.ReversMode.value
 
 		self.Create()
 	}
@@ -573,12 +674,12 @@ class UserInterface {
 ;@Ahk2Exe-UpdateManifest 0
 
 ;@Ahk2Exe-SetDescription Workman layout for AutoHotkey
-;@Ahk2Exe-SetFileVersion 1.3.1
+;@Ahk2Exe-SetFileVersion 1.4.0
 ;@Ahk2Exe-SetProductName Workman
 ;@Ahk2Exe-SetProductVersion 　
 ;@Ahk2Exe-SetCompanyName https://workmanlayout.org
 ;@Ahk2Exe-SetCopyright The Workman Keyboard Layout created by OJ Bucao.
-;@Ahk2Exe-SetLanguage 0x0409 ; English_US    ; 0009 and 04B0 as appropriate.
+;@Ahk2Exe-SetLanguage 0x0009 ; English       ; 04B0 as appropriate.
 ;@Ahk2Exe-SetOrigFilename WorkmanAHK.exe
 
 ;@Ahk2Exe-SetMainIcon .\icon\wm-i1.ico       ; Default icon.
