@@ -3,6 +3,7 @@
 ; 2024/12/06 ~ 2024/12/06 -> 1.1.0 | XPERZ -> Adjustment tray menu.
 ; 2024/12/06 ~ 2024/12/07 -> 1.2.0 | XPERZ -> Supports DVORAK layout and reverse mode.
 ; 2024/12/07 ~ 2024/12/07 -> 1.2.1 | XPERZ -> Enhance maintainability.
+; 2024/12/08 ~ 2024/12/08 -> 1.3.0 | XPERZ -> Add hotkey for Enable function.
 
 
 
@@ -11,7 +12,7 @@
 ListLines(0), KeyHistory(0)
 SetTitleMatchMode(3) ; Exact matching to avoid confusing T/B with Tab/Backspace. (1.2.0 | XPERZ: Has some doubts about this.)
 SendMode("Input")
-Persistent
+;Persistent
 
 
 
@@ -311,6 +312,7 @@ class TrayMenu {
 	static Construct(self := TrayMenu) {
 		Menu := A_TrayMenu
 		Menu.Delete()
+		A_IconTip := ""
 
 		; MENU BEGIN --------
 
@@ -328,6 +330,8 @@ class TrayMenu {
 		Menu.Add() ; --------
 
 		item_name__Enable := "Enable"
+		item_hotkey_name_lalt := GetKeyName("SC038"), item_hotkey_name_ralt := GetKeyName("SC138")
+		item_name__Enable := item_name__Enable " (" item_hotkey_name_lalt " + " item_hotkey_name_ralt ")"
 		Menu.Add(item_name__Enable, (*) => self.Callback.Toggle_Enable(Menu, item_name__Enable))
 		if (Config.File.Unique.ScriptStatus.Enable.value == true)
 			Menu.Check(item_name__Enable)
@@ -335,6 +339,8 @@ class TrayMenu {
 			Config.File.Unique.ScriptStatus.Enable.value := true
 			self.Callback.Toggle_Enable(Menu, item_name__Enable)
 		}
+		Hotkey(item_hotkey_name_lalt " & " item_hotkey_name_ralt, (*) => self.Callback.Toggle_Enable(Menu, item_name__Enable), "S")
+		Hotkey(item_hotkey_name_ralt " & " item_hotkey_name_lalt, (*) => self.Callback.Toggle_Enable(Menu, item_name__Enable), "S")
 
 		item_name__Exit := "Exit"
 		Menu.Add(item_name__Exit, (*) => ExitApp())
@@ -344,11 +350,7 @@ class TrayMenu {
 		Menu.Default := item_name__Enable
 		Menu.ClickCount := 1
 
-		;@Ahk2Exe-IgnoreBegin
-		icon := ".\icon\wm-i1.ico"
-		if (!A_IsSuspended and FileExist(icon))
-			TraySetIcon(icon, , true)
-		;@Ahk2Exe-IgnoreEnd
+		self.RefreshTrayIcon()
 	}
 
 
@@ -391,7 +393,7 @@ class TrayMenu {
 
 
 
-		static Toggle_Enable(menu, item) {
+		static Toggle_Enable(menu, item, self := TrayMenu) {
 			cfg := Config.File.Unique.ScriptStatus.Enable
 
 			cfg.value := !cfg.value
@@ -403,12 +405,18 @@ class TrayMenu {
 			else
 				menu.Uncheck(item)
 
-			;@Ahk2Exe-IgnoreBegin
-			icon := A_IsSuspended ? ".\icon\wm-i2.ico" : ".\icon\wm-i1.ico"
-			if (FileExist(icon))
-				TraySetIcon(icon, , true)
-			;@Ahk2Exe-IgnoreEnd
+			self.RefreshTrayIcon()
 		}
+	}
+
+
+
+	static RefreshTrayIcon() {
+		;@Ahk2Exe-IgnoreBegin
+		icon := A_IsSuspended ? ".\icon\wm-i2.ico" : ".\icon\wm-i1.ico"
+		if (FileExist(icon))
+			TraySetIcon(icon, , true)
+		;@Ahk2Exe-IgnoreEnd
 	}
 }
 
@@ -469,14 +477,30 @@ class Hotkeys {
 
 	class Callback {
 		class Sender {
+		;	key_base_name := ""
 			key_send_name_orgn := ""
+		;	key_send_name_down := ""
+		;	key_send_name_upps := ""
+		;	is_pressed := false
 
-			__New(keyname) {
-				this.key_send_name_orgn := "{" keyname "}"
+			__New(keyname) { ; -----------------------|
+		;	__New(key_base_name, key_mapp_name) { ; <-|
+			;	this.key_base_name := key_base_name
+				this.key_send_name_orgn := "{" keyname "}" ; --------|
+			;	this.key_send_name_orgn := "{" key_mapp_name "}" ; <-|
+			;	this.key_send_name_down := "{" key_mapp_name " Down}"
+			;	this.key_send_name_upps := "{" key_mapp_name " Up}"
 			}
 	
 			Call(*) {
-				Send(this.key_send_name_orgn)
+			;	if (this.is_pressed)
+			;		return
+			;	this.is_pressed := true
+				Send(this.key_send_name_orgn) ; --|
+			;	Send(this.key_send_name_down) ; <-|
+			;	KeyWait(this.key_base_name)
+			;	Send(this.key_send_name_upps)
+			;	this.is_pressed := false
 			}
 		}
 	}
@@ -544,12 +568,12 @@ class UserInterface {
 ;@Ahk2Exe-UpdateManifest 0
 
 ;@Ahk2Exe-SetDescription Workman layout for AutoHotkey
-;@Ahk2Exe-SetFileVersion 1.2.1
+;@Ahk2Exe-SetFileVersion 1.3.0
 ;@Ahk2Exe-SetProductName Workman
 ;@Ahk2Exe-SetProductVersion 　
 ;@Ahk2Exe-SetCompanyName https://workmanlayout.org
 ;@Ahk2Exe-SetCopyright The Workman Keyboard Layout created by OJ Bucao.
-;@Ahk2Exe-SetLanguage 0x0409 ; English_US
+;@Ahk2Exe-SetLanguage 0x0409 ; English_US    ; 0009 and 04B0 as appropriate.
 ;@Ahk2Exe-SetOrigFilename WorkmanAHK.exe
 
 ;@Ahk2Exe-SetMainIcon .\icon\wm-i1.ico       ; Default icon.
