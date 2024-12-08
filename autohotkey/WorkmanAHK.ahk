@@ -4,6 +4,7 @@
 ; 2024/12/06 ~ 2024/12/07 -> 1.2.0 | XPERZ -> Supports DVORAK layout and reverse mode.
 ; 2024/12/07 ~ 2024/12/07 -> 1.2.1 | XPERZ -> Enhance maintainability.
 ; 2024/12/08 ~ 2024/12/08 -> 1.3.0 | XPERZ -> Add hotkey for Enable function.
+; 2024/12/08 ~ 2024/12/08 -> 1.3.1 | XPERZ -> Fixes problems during UAC attempts.
 
 
 
@@ -132,7 +133,8 @@ class Runtime {
 			if (InStr("/restart", arg) != 0)
 				return
 
-		self.RestartWithUac()
+		Try
+			self.RestartWithUac()
 	}
 
 
@@ -149,7 +151,8 @@ class Runtime {
 				break
 			}
 
-		self.RestartWithUac()
+		Try
+			self.RestartWithUac()
 	}
 
 
@@ -568,7 +571,7 @@ class UserInterface {
 ;@Ahk2Exe-UpdateManifest 0
 
 ;@Ahk2Exe-SetDescription Workman layout for AutoHotkey
-;@Ahk2Exe-SetFileVersion 1.3.0
+;@Ahk2Exe-SetFileVersion 1.3.1
 ;@Ahk2Exe-SetProductName Workman
 ;@Ahk2Exe-SetProductVersion 　
 ;@Ahk2Exe-SetCompanyName https://workmanlayout.org

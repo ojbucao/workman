@@ -1,5 +1,6 @@
 ﻿; Workman layout for AutoHotkey - Reverted US-DVORAK
 ; 2024/12/08 ~ 2024/12/08 -> 1.0.0 | XPERZ -> Separate from WorkmanAHK v1.3.0.
+; 2024/12/08 ~ 2024/12/08 -> 1.0.1 | XPERZ -> Fixes problems during UAC attempts.
 
 
 
@@ -75,24 +76,8 @@ class Runtime {
 			if (InStr("/restart", arg) != 0)
 				return
 
-		self.RestartWithUac()
-	}
-
-
-
-	static VerifyUac(self := Runtime) {
-		if A_IsAdmin == true
-			return
-
-		for arg in A_Args
-			if (InStr("/restart", arg) != 0) {
-				user_choice := MsgBox("Failed to run with administrator rights.`nWant to try again?", A_ThisFunc, "OC Icon!")
-				if (user_choice == "Cancel")
-					ExitApp()
-				break
-			}
-
-		self.RestartWithUac()
+		Try
+			self.RestartWithUac()
 	}
 
 
@@ -176,9 +161,9 @@ class TrayMenu {
 ;@Ahk2Exe-UpdateManifest 0
 
 ;@Ahk2Exe-SetDescription Workman layout for AutoHotkey - Reverted US-DVORAK
-;@Ahk2Exe-SetFileVersion 1.0.0
+;@Ahk2Exe-SetFileVersion 1.0.1
 ;@Ahk2Exe-SetProductName WorkmanAHK
-;@Ahk2Exe-SetProductVersion 1.3.0
+;@Ahk2Exe-SetProductVersion 1.3.1
 ;@Ahk2Exe-SetCompanyName https://workmanlayout.org
 ;@Ahk2Exe-SetCopyright The Workman Keyboard Layout created by OJ Bucao.
 ;@Ahk2Exe-SetLanguage 0x0409 ; English_US    ; 0009 and 04B0 as appropriate.
