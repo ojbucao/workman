@@ -153,6 +153,8 @@ class Runtime {
 
 		Try
 			self.RestartWithUac()
+		catch
+			self.RestartApp()
 	}
 
 
