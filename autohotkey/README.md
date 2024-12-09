@@ -26,8 +26,11 @@ You need https://autohotkey.com for this script, or use the exe version.
   - [KBDCMK.DLL](https://kbdlayout.info/kbdcmk)
   	- Colemak Layout
   
-  - [KBDUSL.DLL](https://kbdlayout.info/kbdusl)
+  - [KBDDV.DLL](https://kbdlayout.info/kbddv)
   	- United States-Dvorak Layout
+  
+  - [KBDUSL.DLL](https://kbdlayout.info/kbdusl)
+    - United States-Dvorak for left hand Layout
   
   - [KBDUSR.DLL](https://kbdlayout.info/kbdusr)
     - United States-Dvorak for right hand Layout
