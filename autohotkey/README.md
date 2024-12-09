@@ -18,16 +18,35 @@ You need https://autohotkey.com for this script, or use the exe version.
 
 ### Language Identification
 
-- `US`: See https://kbdlayout.info/kbdus
-	- US Layout
-	- Bulgarian (Latin) Layout
-	- Chinese (Simplified) - US Layout
-	- Chinese (Simplified, Singapore) - US Layout
-	- Chinese (Traditional) - US Layout
-	- Chinese (Traditional, Hong Kong S.A.R.) - US Layout
-	- Chinese (Traditional, Macao S.A.R.) - US Layout
-- `UK`: See https://kbdlayout.info/kbduk
-	- United Kingdom Layout
+- `UK`
+	- [KBDUK.DLL](https://kbdlayout.info/kbduk)
+		- United Kingdom Layout
+
+- `US`
+  - [KBDCMK.DLL](https://kbdlayout.info/kbdcmk)
+  	- Colemak Layout
+  
+  - [KBDUSL.DLL](https://kbdlayout.info/kbdusl)
+  	- United States-Dvorak Layout
+  
+  - [KBDUSR.DLL](https://kbdlayout.info/kbdusr)
+    - United States-Dvorak for right hand Layout
+  
+  - [KBDUSX.DLL](https://kbdlayout.info/kbdusx)
+    - United States-International Layout
+  
+  - [KBDUS.DLL](https://kbdlayout.info/kbdus)
+    - US Layout
+    - Bulgarian (Latin) Layout
+    - Chinese (Simplified) - US Layout
+    - Chinese (Simplified, Singapore) - US Layout
+    - Chinese (Traditional) - US Layout
+    - Chinese (Traditional, Hong Kong S.A.R.) - US Layout
+    - Chinese (Traditional, Macao S.A.R.) - US Layout
+  
+  - [KBDUSA.DLL](https://kbdlayout.info/kbdusa)
+    - US English Table for IBM Arabic 238_L Layout
+  
 
 ### Tray menu options
 
